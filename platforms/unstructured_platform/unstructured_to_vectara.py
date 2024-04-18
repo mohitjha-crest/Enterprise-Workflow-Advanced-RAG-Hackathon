@@ -23,10 +23,11 @@ load_dotenv()
 VECTARA_CLIENT_ID = os.environ.get("VECTARA_CLIENT_ID")
 VECTARA_SECRET = os.environ.get("VECTARA_SECRET")
 VECTARA_CUSTOMER_ID = os.environ.get("VECTARA_CUSTOMER_ID")
-VECTARA_CORPUS_NAME = os.environ.get("VECTARA_CORPUS_NAME")
+VECTARA_CORUPS_NAME = os.environ.get("VECTARA_CORUPS_NAME")
 OUTPUT_DIR = "data/chunked_data"
 INPUT_DIR = "data/testing/SOPs/"
 MAX_CHAR = 2500
+
 
 def get_writer() -> Writer:
     return VectaraWriter(
@@ -36,7 +37,7 @@ def get_writer() -> Writer:
                 oauth_secret=VECTARA_SECRET
             ),
             customer_id=VECTARA_CUSTOMER_ID,
-            corpus_name=VECTARA_CORPUS_NAME
+            corpus_name=VECTARA_CORUPS_NAME
         ),
         write_config=WriteConfig(),
     )

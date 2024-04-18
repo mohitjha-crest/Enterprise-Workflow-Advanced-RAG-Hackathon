@@ -18,8 +18,6 @@ from unstructured.ingest.runner.writers.weaviate import (
 )
 
 import os
-from dotenv import load_dotenv
-load_dotenv()
 
 def get_writer() -> Writer:
     return WeaviateWriter(

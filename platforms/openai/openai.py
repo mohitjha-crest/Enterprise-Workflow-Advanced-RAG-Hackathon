@@ -1,12 +1,12 @@
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
 from langchain_openai import ChatOpenAI
+
+import os
 from dotenv import load_dotenv
 load_dotenv()
-import os
 
-OPENAI_API_KEY = os.environ['OPENAI_API_KEY']
-
+OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
 summary_template = """As Crest Data Systems' assistant, provide precise, complete answers and engage smoothly.
             Note that you should answer user queries based on the documents you have indexed. Ensure to give your answer in well-defined steps.
             Ensure to answer all the questions with respect to crest data systems.
@@ -28,7 +28,7 @@ summary_prompt_template = PromptTemplate(
 # Creating an LLMChain object with the ChatOpenAI model and the summary prompt template
 chain = LLMChain(llm=llm, prompt=summary_prompt_template)
 
-# Invoking the chain with the user input and context
+
 def get_output(context, query):
     gpt_answer = chain.invoke(
         input={"context": context, "query": query}).get("text")
