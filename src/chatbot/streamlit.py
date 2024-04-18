@@ -7,8 +7,8 @@ from platforms.vectara_platform.vectara import request_vectara
 from models.vectara_gpt import request_vectara_gpt
 from models.together_ai import mistral_response
 
-models = ['Vectara', 'Mistral-7b-v0.2', 'Vectara + GPT-3.5-turbo']
-option = st.selectbox('Which model you want to select?', ('Vectara', 'Mistral-7b-v0.2', 'Vectara + GPT-3.5-turbo'))
+models = ['Vectara', 'Together AI (Mistral-7b-v0.2)', 'Vectara + Open AI (GPT-3.5-turbo)']
+option = st.selectbox('Which model you want to select?', ('Vectara', 'Together AI (Mistral-7b-v0.2)', 'Vectara + Open AI (GPT-3.5-turbo)'))
 st.title("Advanced RAG Hackathon")
 
 idx = 0
@@ -39,7 +39,7 @@ if prompt := st.chat_input(placeholder="Write your query here....."):
             if option == 'Vectara':
                 res = request_vectara(prompt)
                 res = res['responseSet'][0]['summary'][0]['text']
-            elif option == 'Mistral-7b-v0.2':
+            elif option == 'Together AI (Mistral-7b-v0.2)':
                 res = mistral_response(prompt)
             else:
                 res = request_vectara_gpt(prompt)
